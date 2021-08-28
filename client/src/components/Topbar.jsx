@@ -8,7 +8,7 @@ const Topbar = () => {
         <Container fluid>
           <MdLocalOffer className="text-warning" />
           <h6 className="text-light">
-            &nbsp;&nbsp; Free Home Delivery on Order Above 500/- Rupess
+            &nbsp; &nbsp; Free Home Delivery on Order Above 500/- Rupess
           </h6>
           <Nav className="ms-auto">
             <LinkContainer to="/" activeClassName>
