@@ -6,12 +6,14 @@ const NavBar = () => {
     <>
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <Container>
-          <Navbar.Brand href="#home">
-            <Image
-              src="images/logo.png"
-              alt="logo"
-              style={{ height: "50px" }}
-            />
+          <Navbar.Brand>
+            <LinkContainer to="/" style={{ cursor: "pointer", height: "50px" }}>
+              <Image
+                src="images/logo.png"
+                alt="logo"
+                style={{ height: "50px" }}
+              />
+            </LinkContainer>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
