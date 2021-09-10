@@ -5,6 +5,7 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Policies from "./components/Policies";
 import Navbar from "./components/Navbar";
+import HomeScreen from "./screens/HomeScreen";
 function App() {
   return (
     <Router>
@@ -14,6 +15,7 @@ function App() {
         <Route path="/about" component={About} exact />
         <Route path="/contact" component={Contact} exact />
         <Route path="/policy" component={Policies} exact />
+        <Route path="/" component={HomeScreen} exact />
       </Switch>
     </Router>
   );
