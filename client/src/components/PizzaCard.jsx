@@ -1,18 +1,23 @@
 import { useState } from "react";
 import { Card, Button, Row, Col, Modal } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { adToCart } from "../redux/actions/cartAction";
 const PizzaCard = ({ pizza }) => {
-  const [variant, setVariant] = useState("small");
+  const [varient, setvarient] = useState("small");
   const [quantity, setQuantity] = useState(1);
 
   const [show, setShow] = useState(false);
-
+  const dispatch = useDispatch();
+  const addTocartHandler = () => {
+    dispatch(adToCart(pizza, quantity, varient));
+  };
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   return (
     <>
       <Card style={{ width: "18rem", marginTop: "30px", cursor: "pointer" }}>
         <Card.Img
-          variant="top"
+          varient="top"
           src={pizza.image}
           style={{ height: "200px" }}
           onClick={handleShow}
@@ -23,13 +28,13 @@ const PizzaCard = ({ pizza }) => {
           <Card.Text>
             <Row>
               <Col md={6}>
-                <h6>Variants</h6>
+                <h6>varients</h6>
                 <select
-                  value={variant}
-                  onChange={(e) => setVariant(e.target.value)}
+                  value={varient}
+                  onChange={(e) => setvarient(e.target.value)}
                 >
-                  {pizza.varients.map((variant) => (
-                    <option value={variant}>{variant}</option>
+                  {pizza.varients.map((varient) => (
+                    <option value={varient}>{varient}</option>
                   ))}
                 </select>
               </Col>
@@ -47,9 +52,14 @@ const PizzaCard = ({ pizza }) => {
             </Row>
           </Card.Text>
           <Row>
-            <Col md={6}>Price : {pizza.prices[0][variant] * quantity}/-RS</Col>
+            <Col md={6}>Price : {pizza.prices[0][varient] * quantity}/-RS</Col>
             <Col md={6}>
-              <Button className="bg-dark text-white">Add To Card</Button>
+              <Button
+                onClick={addTocartHandler}
+                className="bg-dark text-white"
+              >
+                Add To Card
+              </Button>
             </Col>
           </Row>
         </Card.Body>
@@ -60,10 +70,10 @@ const PizzaCard = ({ pizza }) => {
         </Modal.Header>
         <Modal.Body>
           <div>
-            <Card.Img variant="top" src={pizza.image} />
+            <Card.Img varient="top" src={pizza.image} />
           </div>
           <div>
-            <h5 className='mt-2'>Descripton :</h5>
+            <h5 className="mt-2">Descripton :</h5>
             <h6>{pizza.description}</h6>
           </div>
         </Modal.Body>

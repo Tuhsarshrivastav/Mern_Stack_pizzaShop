@@ -9,7 +9,7 @@ import HomeScreen from "./screens/HomeScreen";
 function App() {
   return (
     <Router>
-      <Topbar />
+      {/* <Topbar /> */}
       <Navbar />
       <Switch>
         <Route path="/about" component={About} exact />
