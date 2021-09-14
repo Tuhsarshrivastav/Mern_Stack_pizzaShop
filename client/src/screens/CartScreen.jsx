@@ -1,11 +1,12 @@
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col,Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { FaMinusCircle, FaPlusCircle } from "react-icons/fa";
-import { adToCart } from "../redux/actions/cartAction";
+import { FaMinusCircle, FaPlusCircle, FaTrash } from "react-icons/fa";
+import { adToCart, deleteFromCart } from "../redux/actions/cartAction";
 const CartScreen = () => {
   const cartState = useSelector((state) => state.cartReducers);
   const { cartItems } = cartState;
   const dispatch = useDispatch();
+  const subTotal = cartItems.reduce((x, item) => x + item.price, 0);
   return (
     <>
       <Container style={{ marginTop: "20px" }}>
@@ -57,6 +58,13 @@ const CartScreen = () => {
                         borderRadius: "5px",
                       }}
                     />
+                    <FaTrash
+                      className="text-danger"
+                      style={{ cursor: "pointer", marginLeft: "20px" }}
+                      onClick={() => {
+                        dispatch(deleteFromCart(item));
+                      }}
+                    />
                   </Col>
                   <hr style={{ marginTop: "10px" }} />
                 </>
@@ -66,6 +74,9 @@ const CartScreen = () => {
 
           <Col md={4}>
             <h1>Payment Info</h1>
+            <h4>Sub Total</h4>
+            <h4>RS : {subTotal} /-</h4>
+            <Button>Checkout</Button>
           </Col>
         </Row>
       </Container>
