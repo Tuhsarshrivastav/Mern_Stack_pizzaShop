@@ -7,6 +7,8 @@ import Policies from "./components/Policies";
 import Navbar from "./components/Navbar";
 import HomeScreen from "./screens/HomeScreen";
 import CartScreen from "./screens/CartScreen";
+import Register from "./screens/Register";
+import Login from "./screens/Login";
 function App() {
   return (
     <Router>
@@ -14,6 +16,8 @@ function App() {
       <Navbar />
       <Switch>
         <Route path="/cart" component={CartScreen} exact />
+        <Route path="/register" component={Register} exact />
+        <Route path="/login" component={Login} exact />
         <Route path="/about" component={About} exact />
         <Route path="/contact" component={Contact} exact />
         <Route path="/policy" component={Policies} exact />
