@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
-
+import { useDispatch } from "react-redux";
+import { userRegister } from "../redux/actions/userAction";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [ConfrimPassword, setConfrimPassword] = useState("");
-
+  const dispatch = useDispatch();
   const registerhandler = (e) => {
     e.preventDefault();
     if (password !== ConfrimPassword) {

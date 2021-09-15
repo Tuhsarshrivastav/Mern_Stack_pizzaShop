@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Card, Button, Row, Col, Modal } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { adToCart } from "../redux/actions/cartAction";
 const PizzaCard = ({ pizza }) => {
   const [varient, setvarient] = useState("small");

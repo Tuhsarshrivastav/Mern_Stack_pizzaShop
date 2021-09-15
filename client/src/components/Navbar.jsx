@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Container, Nav, Image } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 
 const NavBar = () => {
   const cartstate = useSelector((state) => state.cartReducers);
