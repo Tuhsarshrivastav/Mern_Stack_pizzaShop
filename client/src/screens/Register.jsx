@@ -14,7 +14,11 @@ const Login = () => {
       alert("password do not match");
     } else {
       const user = { name, email, password, ConfrimPassword };
-      console.log(user);
+      dispatch(userRegister(user));
+      setEmail("");
+      setName("");
+      setPassword("");
+      setConfrimPassword("");
     }
   };
   return (
