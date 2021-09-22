@@ -15,4 +15,23 @@ const register = (req, res) => {
     });
   }
 };
-module.exports = { register };
+const login = async (req, res) => {
+  const { email, password } = req.body;
+  try {
+    const user = await User.find({ email, password });
+    if (user.length > 0) {
+      const currentUser = {
+        name: user[0].name,
+        email: user[0].email,
+        isAdmin: user[0].isAdmin,
+        _id: user[0].id,
+      };
+      res.status(200).send(currentUser);
+    } else {
+      res.status(400).json({ message: "login  fail" });
+    }
+  } catch (error) {
+    res.status(404).json({ message: "something went wrong" });
+  }
+};
+module.exports = { register, login };
