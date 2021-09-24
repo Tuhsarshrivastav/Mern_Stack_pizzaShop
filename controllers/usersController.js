@@ -28,7 +28,7 @@ const login = async (req, res) => {
       };
       res.status(200).send(currentUser);
     } else {
-      res.status(400).json({ message: "login  fail" });
+      res.status(400).json({ message: "Login Failed" });
     }
   } catch (error) {
     res.status(404).json({ message: "something went wrong" });
