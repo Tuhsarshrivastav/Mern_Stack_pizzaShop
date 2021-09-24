@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userRegister } from "../redux/actions/userAction";
+import Loader from "../components/Loader";
+import Success from "../components/Success";
+import Error from "../components/Error";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [ConfrimPassword, setConfrimPassword] = useState("");
   const dispatch = useDispatch();
+  const { loading, error, success } = useSelector(
+    (state) => state.userRegisterReducer
+  );
+
   const registerhandler = (e) => {
     e.preventDefault();
     if (password !== ConfrimPassword) {
@@ -24,6 +32,9 @@ const Login = () => {
   return (
     <>
       <Container>
+        {loading && <Loader />}
+        {success && <Success success="User Register Successfully" />}
+        {error && <Error error="Something went wrong" />}
         <Form>
           <h1>Regiteration</h1>
           <Form.Group className="mb-3" controlId="formBasicEmail">

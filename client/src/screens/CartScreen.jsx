@@ -1,7 +1,8 @@
-import { Container, Row, Col,Button } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { FaMinusCircle, FaPlusCircle, FaTrash } from "react-icons/fa";
 import { adToCart, deleteFromCart } from "../redux/actions/cartAction";
+import Cheackout from "../components/Cheackout";
 const CartScreen = () => {
   const cartState = useSelector((state) => state.cartReducers);
   const { cartItems } = cartState;
@@ -76,7 +77,7 @@ const CartScreen = () => {
             <h1>Payment Info</h1>
             <h4>Sub Total</h4>
             <h4>RS : {subTotal} /-</h4>
-            <Button>Checkout</Button>
+            <Cheackout subTotal={subTotal} />
           </Col>
         </Row>
       </Container>
