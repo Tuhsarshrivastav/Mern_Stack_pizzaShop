@@ -18,7 +18,7 @@ const HomeScreen = () => {
         {loading ? (
           <Loader />
         ) : error ? (
-          <Error  error={error} />
+          <Error error={error} />
         ) : (
           <Row>
             {pizzas?.map((pizza) => (

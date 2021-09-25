@@ -2,7 +2,7 @@ import React from "react";
 import { Navbar, Container, Nav, Image, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { userLogout } from "../redux/actions/userAction";
+import { logoutUser  } from "../redux/actions/userAction";
 
 const NavBar = () => {
   const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const NavBar = () => {
           <Navbar.Brand>
             <LinkContainer to="/" style={{ cursor: "pointer", height: "50px" }}>
               <Image
-                src="images/logo.png"
+                src="/apple-touch-icon.png"
                 alt="logo"
                 style={{ height: "50px" }}
               />
@@ -25,26 +25,21 @@ const NavBar = () => {
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ms-auto">
               {currentUser ? (
-                <>
-                  <LinkContainer to="/">
-                    <NavDropdown
-                      title={currentUser.name}
-                      id="basic-nav-dropdown"
-                    >
-                      <NavDropdown.Item href="#action/3.1">
-                        Order
-                      </NavDropdown.Item>
+                <LinkContainer to="/">
+                  <NavDropdown title={currentUser.name} id="basic-nav-dropdown">
+                    <LinkContainer to="/orders">
+                      <NavDropdown.Item>orders</NavDropdown.Item>
+                    </LinkContainer>
 
-                      <NavDropdown.Item
-                        onClick={() => {
-                          dispatch(userLogout);
-                        }}
-                      >
-                        Logout
-                      </NavDropdown.Item>
-                    </NavDropdown>
-                  </LinkContainer>
-                </>
+                    <NavDropdown.Item
+                      onClick={() => {
+                        dispatch(logoutUser());
+                      }}
+                    >
+                      Logout
+                    </NavDropdown.Item>
+                  </NavDropdown>
+                </LinkContainer>
               ) : (
                 <>
                   <LinkContainer to="/login">

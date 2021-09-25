@@ -2,7 +2,13 @@ import { Spinner } from "react-bootstrap";
 
 const Loader = () => {
   return (
-    <Spinner style={{ margin: "auto" }} animation="border" variant="warning" />
+    <Spinner style={{
+      width: "100px",
+      height: "100px",
+      margin: "auto",
+      display: "block",
+      marginTop: "150px",
+    }} animation="border" variant="warning" />
   );
 };
 

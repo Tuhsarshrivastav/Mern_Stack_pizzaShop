@@ -20,7 +20,7 @@ export const userlogin = (user) => async (dispatch) => {
     dispatch({ type: "USER_LOGIN_FAIL", payload: error });
   }
 };
-export const userLogout = () => (dispatch) => {
+export const logoutUser = () => (dispatch) => {
   localStorage.removeItem("currentUser");
   window.location.href = "/login";
 };

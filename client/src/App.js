@@ -8,13 +8,14 @@ import HomeScreen from "./screens/HomeScreen";
 import CartScreen from "./screens/CartScreen";
 import Register from "./screens/Register";
 import Login from "./screens/Login";
+import OrderScreen from "./screens/OrderScreen";
 function App() {
   return (
     <Router>
-      {/* <Topbar /> */}
       <Navbar />
       <Switch>
         <Route path="/cart" component={CartScreen} exact />
+        <Route path="/orders" component={OrderScreen} exact />
         <Route path="/register" component={Register} exact />
         <Route path="/login" component={Login} exact />
         <Route path="/about" component={About} exact />

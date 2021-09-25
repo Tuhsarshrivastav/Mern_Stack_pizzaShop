@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require("uuid");
-const stripe = require("stripe")('your key');
+const stripe = require("stripe")("your key");
 const Order = require("../models/orderModal");
 
 module.exports.orderController = async (req, res) => {
@@ -47,6 +47,18 @@ module.exports.orderController = async (req, res) => {
     res.status(400).json({
       message: "Something Went Wrong",
 
+      error: error.stack,
+    });
+  }
+};
+module.exports.getOrderController = async (req, res) => {
+  const { userid } = req.body;
+  try {
+    const orders = await Order.find({ userid }).sort({ _id: "-1" });
+    res.status(200).send(orders);
+  } catch (error) {
+    res.status(400).json({
+      message: "Something Went Wront",
       error: error.stack,
     });
   }
