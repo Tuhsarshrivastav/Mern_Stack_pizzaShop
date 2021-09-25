@@ -29,6 +29,8 @@
     "express": "^4.17.1",
     "mongoose": "^6.0.5",
     "morgan": "^1.10.0",
-    "react-stripe-checkout": "^2.6.3"
+    "react-stripe-checkout": "^2.6.3",
+    "stripe": "^8.176.0",
+    "uuid": "^8.3.2"
   }
 }
