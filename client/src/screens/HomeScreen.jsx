@@ -22,8 +22,8 @@ const HomeScreen = () => {
         ) : (
           <Row>
             {pizzas?.map((pizza) => (
-              <Col md={4}>
-                <PizzaCard pizza={pizza} />
+              <Col md={4} key={pizza._id}>
+                <PizzaCard pizza={pizza} key={pizza._id}/>
               </Col>
             ))}
           </Row>

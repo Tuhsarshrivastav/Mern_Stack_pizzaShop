@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { FaMinusCircle, FaPlusCircle, FaTrash } from "react-icons/fa";
 import { adToCart, deleteFromCart } from "../redux/actions/cartAction";

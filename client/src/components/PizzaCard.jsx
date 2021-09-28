@@ -27,14 +27,14 @@ const PizzaCard = ({ pizza }) => {
           <hr />
           <Card.Text>
             <Row>
-              <Col md={6}>
+              <Col md={6} key={pizza._id}>
                 <h6>varients</h6>
                 <select
                   value={varient}
                   onChange={(e) => setvarient(e.target.value)}
                 >
                   {pizza.varients.map((varient) => (
-                    <option value={varient}>{varient}</option>
+                    <option key={varient} value={varient}>{varient}</option>
                   ))}
                 </select>
               </Col>
