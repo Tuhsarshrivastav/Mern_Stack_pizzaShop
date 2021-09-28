@@ -9,11 +9,14 @@ import CartScreen from "./screens/CartScreen";
 import Register from "./screens/Register";
 import Login from "./screens/Login";
 import OrderScreen from "./screens/OrderScreen";
+import AdminScreen from "./screens/AdminScreen";
+
 function App() {
   return (
     <Router>
       <Navbar />
       <Switch>
+        <Route path="/admin" component={AdminScreen} />
         <Route path="/cart" component={CartScreen} exact />
         <Route path="/orders" component={OrderScreen} exact />
         <Route path="/register" component={Register} exact />
