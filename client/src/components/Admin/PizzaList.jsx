@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { getAllPizzas } from "../../redux/actions/PizzaAction";
 import Loader from "../Loader";
 import Error from "../Error";
-import { FiEdit } from "react-icons/fi";
-import { AiFillDelete } from "react-icons/ai";
+import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { Link } from "react-router-dom";
 const PizzaList = () => {
   const dispatch = useDispatch();
   const pizzasState = useSelector((state) => state.getAllPizzaReducer);
@@ -18,13 +18,13 @@ const PizzaList = () => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Error error={error} />
+        <Error>Error while fetching pizzas {error}</Error>
       ) : (
         <div>
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>S/n</th>
+                <th>Image</th>
                 <th>Pizza Name</th>
                 <th>Prices</th>
                 <th>Category</th>
@@ -37,8 +37,8 @@ const PizzaList = () => {
                   <tr>
                     <td>
                       <img
-                        src={pizza.img}
-                        alt={pizza.name}
+                        src={pizza.image}
+                        alt="logo"
                         width="100px"
                         height="100px"
                       />
@@ -53,8 +53,16 @@ const PizzaList = () => {
                     </td>
                     <td>{pizza.category}</td>
                     <td>
-                      <FiEdit /> &nbsp;
-                      <AiFillDelete />
+                      <Link to={`/admin/editpizza/${pizza._id}`}>
+                        <AiFillEdit style={{ cursor: "pointer" }} />
+                      </Link>
+                      &nbsp;
+                      <AiFillDelete
+                        style={{ color: "red", cursor: "pointer" }}
+                        // onClick={() => {
+                        //   dispatch(deletePizza(pizza._id));
+                        // }}
+                      />
                     </td>
                   </tr>
                 ))}

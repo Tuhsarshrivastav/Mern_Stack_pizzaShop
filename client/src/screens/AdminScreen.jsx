@@ -19,31 +19,21 @@ const AdminScreen = ({ history }) => {
       <Container>
         <Row>
           <h1 className="text-center bg-dark text-light p-2">Admin Panel</h1>
-          <Col md={3}>
+          <Col md={2}>
             <ButtonGroup vertical style={{ minHeight: "400px" }}>
               <Button onClick={() => history.push("/admin")}>All Users</Button>
-              <Button
-                onClick={() => history.push("/admin/pizzalist")}
-                style={{ marginTop: "5px" }}
-              >
-                {" "}
+              <Button onClick={() => history.push("/admin/pizzalist")}>
                 All Pizzas
               </Button>
-              <Button
-                onClick={() => history.push("/admin/addnewpizza")}
-                style={{ marginTop: "5px" }}
-              >
+              <Button onClick={() => history.push("/admin/addnewpizza")}>
                 Add New Pizza
               </Button>
-              <Button
-                onClick={() => history.push("/admin/orderlist")}
-                style={{ marginTop: "5px" }}
-              >
+              <Button onClick={() => history.push("/admin/orderlist")}>
                 All Orders
               </Button>
             </ButtonGroup>
           </Col>
-          <Col md={9}>
+          <Col md={10}>
             <Switch>
               <Route path="/admin" component={UserList} exact />
               <Route path="/admin/pizzalist" component={PizzaList} exact />
