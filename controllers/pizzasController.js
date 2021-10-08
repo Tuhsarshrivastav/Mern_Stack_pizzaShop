@@ -8,4 +8,21 @@ const getPizzas = async (req, res) => {
     res.json({ message: error });
   }
 };
-module.exports = { getPizzas };
+const addPizzas = async (req, res) => {
+  const { pizza } = req.body;
+  try {
+    const newPizza = new pizzaModel({
+      name: pizza.name,
+      image: pizza.image,
+      varients: ["small", "medium", "large"],
+      description: pizza.description,
+      category: pizza.category,
+      prices: [pizza.prices],
+    });
+    await newPizza.save();
+    res.json.status(201).send("New Pizza Added");
+  } catch (error) {
+    res.json({ message: error });
+  }
+};
+module.exports = { getPizzas, addPizzas };

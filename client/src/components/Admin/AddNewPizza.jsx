@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import { Form, Row, Button, Col } from "react-bootstrap";
+import { addPizza } from "../../redux/actions/PizzaAction";
+import { useDispatch, useSelector } from "react-redux";
+import Error from "../../components/Error";
+import Loader from "../../components/Loader";
+import Success from "../../components/Success";
 const AddNewPizza = () => {
   const [name, setName] = useState("");
   const [smallPrice, setsmallPrice] = useState("");
@@ -8,6 +13,12 @@ const AddNewPizza = () => {
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
+
+  const { loading, error, success } = useSelector(
+    (state) => state.addPizzaReducer
+  );
+
+  const dispatch = useDispatch();
   const submitForm = (e) => {
     e.preventDefault();
 
@@ -22,10 +33,13 @@ const AddNewPizza = () => {
         large: largePrice,
       },
     };
-    console.log(pizza);
+    dispatch(addPizza(pizza));
   };
   return (
-    <>
+    <div>
+      {loading && <Loader />}
+      {error && <Error error="error while adding new pizza" />}
+      {success && <Success success="Pizza Added Successfully" />}
       <Form onSubmit={submitForm} className="bg-light p-4">
         <Row className="mb-3">
           <Form.Group as={Col} controlId="formGridEmail">
@@ -99,7 +113,7 @@ const AddNewPizza = () => {
           Add New
         </Button>
       </Form>
-    </>
+    </div>
   );
 };
 
