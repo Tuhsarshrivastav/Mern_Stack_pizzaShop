@@ -8,6 +8,14 @@ const getPizzas = async (req, res) => {
     res.json({ message: error });
   }
 };
+const getpizzabyid = async (req, res) => {
+  try {
+    const pizzas = await pizzaModel.find({});
+    res.send(pizzas);
+  } catch (error) {
+    res.json({ message: error });
+  }
+};
 const addPizzas = async (req, res) => {
   const { pizza } = req.body;
   try {
@@ -25,4 +33,4 @@ const addPizzas = async (req, res) => {
     res.json({ message: error });
   }
 };
-module.exports = { getPizzas, addPizzas };
+module.exports = { getPizzas, addPizzas,getpizzabyid };

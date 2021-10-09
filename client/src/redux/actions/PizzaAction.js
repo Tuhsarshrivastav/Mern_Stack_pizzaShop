@@ -18,3 +18,12 @@ export const addPizza = (pizza) => async (dispatch) => {
     dispatch({ type: "ADD_PIZZAS_FAIL", payload: err });
   }
 };
+export const getPizzaById = (pizzaId) => async (dispatch) => {
+  dispatch({ type: "GET_PIZZABYID_REQUEST" });
+  try {
+    const response = await axios.post("/api/pizzas/getpizzabyid", { pizzaId });
+    dispatch({ type: "GET_PIZZABYID_SUCCESS", payload: response.data });
+  } catch (err) {
+    dispatch({ type: "GET_PIZZABYID_FAIL", payload: err });
+  }
+};
