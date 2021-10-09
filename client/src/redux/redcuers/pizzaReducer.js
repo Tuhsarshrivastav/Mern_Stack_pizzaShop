@@ -40,22 +40,22 @@ export const addPizzaReducer = (state = {}, action) => {
       return state;
   }
 };
-export const getpizzabyidReducer = (state = {}, action) => {
+export const getPizzaByIdReducer = (state = {}, action) => {
   switch (action.type) {
-    case "ADD_PIZZAS_REQUEST":
+    case "GET_PIZZABYID_REQUEST":
       return {
         ...state,
         loading: true,
       };
-    case "ADD_PIZZAS_SUCCESS":
+    case "GET_PIZZABYID_SUCCESS":
       return {
         pizza: action.payload,
         loading: false,
       };
-    case "ADD_PIZZAS_FAIL":
+    case "GET_PIZZABYID_FAIL":
       return {
-        error: action.payload,
         loading: false,
+        error: action.payload,
       };
     default:
       return state;
