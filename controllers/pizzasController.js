@@ -20,7 +20,7 @@ const addPizzas = async (req, res) => {
       prices: [pizza.prices],
     });
     await newPizza.save();
-    res.json.status(201).send("New Pizza Added");
+    res.status(201).send("New Pizza Added");
   } catch (error) {
     res.json({ message: error });
   }

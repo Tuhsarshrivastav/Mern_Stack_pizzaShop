@@ -19,7 +19,7 @@ export const getAllPizzaReducer = (state = { pizzas: [] }, action) => {
       return state;
   }
 };
-export const addPizzaReducer = (state = { pizzas: [] }, action) => {
+export const addPizzaReducer = (state = {}, action) => {
   switch (action.type) {
     case "ADD_PIZZAS_REQUEST":
       return {

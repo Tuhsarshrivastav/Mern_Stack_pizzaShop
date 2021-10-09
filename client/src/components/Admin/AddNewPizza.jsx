@@ -38,7 +38,7 @@ const AddNewPizza = () => {
   return (
     <div>
       {loading && <Loader />}
-      {error && <Error error="error while adding new pizza" />}
+      {error && <Error error="add new pizza error" />}
       {success && <Success success="Pizza Added Successfully" />}
       <Form onSubmit={submitForm} className="bg-light p-4">
         <Row className="mb-3">
@@ -46,69 +46,73 @@ const AddNewPizza = () => {
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
-              placeholder="Enter email"
               value={name}
               onChange={(e) => setName(e.target.value)}
+              placeholder="Enter Pizza Name"
             />
           </Form.Group>
           <Row className="mb-3 mt-3">
             <Form.Group as={Col} controlId="formGridCity">
-              <Form.Label>Small Prize</Form.Label>
+              <Form.Label>Small Price</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Small Price"
                 value={smallPrice}
                 onChange={(e) => setsmallPrice(e.target.value)}
+                placeholder="Enter Small Price"
               />
             </Form.Group>
+
             <Form.Group as={Col} controlId="formGridState">
-              <Form.Label>State</Form.Label>
+              <Form.Label>Medium Price</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Medium Price"
                 value={mediumPrice}
                 onChange={(e) => setmediumPrice(e.target.value)}
+                placeholder="Enter medium price"
               />
             </Form.Group>
+
             <Form.Group as={Col} controlId="formGridZip">
-              <Form.Label>Zip</Form.Label>
+              <Form.Label>Large Price</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Large Price"
                 value={largePrice}
                 onChange={(e) => setlargePrice(e.target.value)}
+                placeholder="Enter larg price"
               />
             </Form.Group>
           </Row>
           <Form.Group as={Col} controlId="formGridPassword">
             <Form.Label>Image</Form.Label>
             <Form.Control
-              placeholder="text"
-              type="text"
-              placeholder="Enter Image Url"
+              ttype="text"
               value={image}
-              onChange={(e) => setImage(e.target.nodeValue)}
+              onChange={(e) => setImage(e.target.value)}
+              placeholder="Add Image URL"
             />
           </Form.Group>
         </Row>
+
         <Form.Group className="mb-3" controlId="formGridAddress1">
           <Form.Label>Description</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter Description"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            placeholder="Enter Description"
           />
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="formGridAddress2">
           <Form.Label>Category</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
+            placeholder="Enter Category"
           />
         </Form.Group>
+
         <Button variant="primary" type="submit">
           Add New
         </Button>
