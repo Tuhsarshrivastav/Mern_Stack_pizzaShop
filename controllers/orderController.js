@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require("uuid");
-const stripe = require("stripe")("your key");
+const stripe = require("stripe")("");
 const Order = require("../models/orderModal");
 
 module.exports.orderController = async (req, res) => {
@@ -64,10 +64,23 @@ module.exports.getOrderController = async (req, res) => {
   }
 };
 module.exports.alluserorderController = async (req, res) => {
-  const { userid } = req.body;
   try {
-    const orders = await Order.find({ userid }).sort({ _id: "-1" });
+    const orders = await Order.find({});
     res.status(200).send(orders);
+  } catch (error) {
+    res.status(400).json({
+      message: "Something Went Wront",
+      error: error.stack,
+    });
+  }
+};
+module.exports.deliverorderController = async (req, res) => {
+  const orderid = req.body.orderid;
+  try {
+    const order = await Order.findOne({ _id: orderid });
+    order.isDeliverd = true;
+    await order.save();
+    res.status(200).send("Order deliverd success");
   } catch (error) {
     res.status(400).json({
       message: "Something Went Wront",

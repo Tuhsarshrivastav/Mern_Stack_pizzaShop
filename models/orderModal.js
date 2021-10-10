@@ -21,15 +21,15 @@ const orderSchema = mongoose.Schema(
       //   required: true,
     },
     isDeliverd: {
-      type: String,
-      //   required: true,
+      type: Boolean,
+      default: false,
     },
     transectionId: {
       type: String,
       //   required: true,
     },
   },
-  { timetamps: true }
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("order", orderSchema);
