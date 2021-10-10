@@ -1,7 +1,7 @@
 import { Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getAllPizzas } from "../../redux/actions/PizzaAction";
+import { getAllPizzas, deletePizza } from "../../redux/actions/PizzaAction";
 import Loader from "../Loader";
 import Error from "../Error";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
@@ -59,9 +59,9 @@ const PizzaList = () => {
                       &nbsp;
                       <AiFillDelete
                         style={{ color: "red", cursor: "pointer" }}
-                        // onClick={() => {
-                        //   dispatch(deletePizza(pizza._id));
-                        // }}
+                        onClick={() => {
+                          dispatch(deletePizza(pizza._id));
+                        }}
                       />
                     </td>
                   </tr>
