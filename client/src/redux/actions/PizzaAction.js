@@ -46,6 +46,7 @@ export const deletePizza = (pizzaId) => async (dispatch) => {
       pizzaId,
     });
     swal("Pizza Deleted Success!", "success");
+    window.location.href = "/admin/pizzalist";
   } catch (err) {
     swal("Error while Deleting Pizza");
   }

@@ -63,3 +63,15 @@ module.exports.getOrderController = async (req, res) => {
     });
   }
 };
+module.exports.alluserorderController = async (req, res) => {
+  const { userid } = req.body;
+  try {
+    const orders = await Order.find({ userid }).sort({ _id: "-1" });
+    res.status(200).send(orders);
+  } catch (error) {
+    res.status(400).json({
+      message: "Something Went Wront",
+      error: error.stack,
+    });
+  }
+};
