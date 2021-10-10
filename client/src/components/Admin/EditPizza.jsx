@@ -5,6 +5,7 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import Loader from "./../Loader";
 import Error from "./../Error";
 import Success from "./../Success";
+import { updatePizza } from "../../redux/actions/PizzaAction";
 const EditPizza = ({ match }) => {
   const [name, setname] = useState("");
   const [smallPrice, setsmallPrice] = useState();
@@ -14,11 +15,12 @@ const EditPizza = ({ match }) => {
   const [description, setdescription] = useState("");
   const [category, setcategory] = useState("");
   const dispatch = useDispatch();
-  const {
-    error,
-    loading: updateloading,
-    pizza,
-  } = useSelector((state) => state.getPizzaByIdReducer);
+  const { error, loading, pizza } = useSelector(
+    (state) => state.getPizzaByIdReducer
+  );
+  const { updatesuccess, updateloading, updateerror } = useSelector(
+    (state) => state.updatePizzaByIdReducer
+  );
   useEffect(() => {
     if (pizza) {
       if (pizza._id === match.params.pizzaId) {
@@ -50,7 +52,7 @@ const EditPizza = ({ match }) => {
         larg: largprice,
       },
     };
-    // dispatch(updatePizza(updatedPizza));
+    dispatch(updatePizza(updatedPizza));
   };
   return (
     <div>

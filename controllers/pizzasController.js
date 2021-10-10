@@ -34,4 +34,20 @@ const addPizzas = async (req, res) => {
     res.json({ message: error });
   }
 };
-module.exports = { getPizzas, addPizzas, getpizzabyid };
+const updatepizza = async (req, res) => {
+  const { updatedPizza } = req.body;
+
+  try {
+    const pizza = await pizzaModel.findOne({ _id: updatedPizza._id });
+    (pizza.name = updatedPizza.name),
+      (pizza.description = updatedPizza.description),
+      (pizza.image = updatedPizza.image),
+      (pizza.category = updatedPizza.category),
+      (pizza.prices = [updatedPizza.prices]);
+    await pizza.save();
+    res.status(200).send("Pizza Update Success");
+  } catch (error) {
+    res.status(400).json({ message: error });
+  }
+};
+module.exports = { getPizzas, addPizzas, getpizzabyid, updatepizza };
