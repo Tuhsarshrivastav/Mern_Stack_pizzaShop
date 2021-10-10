@@ -41,9 +41,8 @@ export const updatePizza = (updatedPizza) => async (dispatch) => {
   }
 };
 export const deletePizza = (pizzaId) => async (dispatch) => {
-  dispatch({ type: "UPDATE_PIZZABYID_REQUEST" });
   try {
-    const response = await axios.delete("/api/pizzas/deletepizza", {
+    const response = await axios.post("/api/pizzas/deletepizza", {
       pizzaId,
     });
     swal("Pizza Deleted Success!", "success");
