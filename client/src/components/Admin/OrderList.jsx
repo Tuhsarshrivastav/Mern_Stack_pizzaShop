@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllOrders } from "../../redux/actions/orderAction";
+import { getAllOrders, deliverOrder } from "../../redux/actions/orderAction";
 import { Table, Button } from "react-bootstrap";
 import Loader from "../Loader";
 import Error from "../Error";
@@ -43,14 +43,14 @@ const OrderList = () => {
                     <h6 className="text-success">Deliverd</h6>
                   ) : (
                     <>
-                      {/* <Button
+                      <Button
                         className="btn-danger"
                         onClick={() => {
                           dispatch(deliverOrder(order._id));
                         }}
                       >
                         Deliver
-                      </Button> */}
+                      </Button>
                     </>
                   )}{" "}
                 </td>

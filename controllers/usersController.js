@@ -34,4 +34,21 @@ const login = async (req, res) => {
     res.status(404).json({ message: "something went wrong" });
   }
 };
-module.exports = { register, login };
+const getallusers = async (req, res) => {
+  try {
+    const users = await User.find({});
+    res.status(200).send(users);
+  } catch (error) {
+    res.status(400).json({ message: error.stack });
+  }
+};
+const deleteuser = async (req, res) => {
+  const userid = req.body.userid;
+  try {
+    await User.findOneAndDelete({ _id: userid });
+    res.status(200).send("User Deleted");
+  } catch (error) {
+    res.status(404).json({ message: error.stack });
+  }
+};
+module.exports = { register, login, getallusers, deleteuser };
